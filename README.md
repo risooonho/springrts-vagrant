@@ -5,7 +5,13 @@ Startings of a Vagrant environment for building spring
 ## Requirements
 
  - Vagrant
- - Virtualbox
+ - Virtualbox or libvirt / kvm
+
+
+
+## Running with libvirt
+
+ vagrant plugin uninstall vagrant-libvirt
 
 ## Usage
 
