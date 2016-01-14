@@ -14,7 +14,7 @@ Startings of a Vagrant environment for building spring
   gem install fog-core --version 1.29.0
   gem install fog --version 1.29.0
   gem install veewee gog-libvirt
-  veewee kvm build 'spring-vm' --workdir=.
+  LC_ALL=C veewee kvm build 'spring-vm' --workdir=.
 
 
 ## Running with libvirt (as example on ubuntu)
