@@ -19,7 +19,7 @@ Veewee::Definition.declare({
     '<Wait>' * 2,
     'gentoo-nofb nokeymap<Enter>',
     '<Wait>' * 40,
-    'echo Permit<Wait>RootLogin yes>><Wait>', # when typing to much at once, chars get lost
+    'echo Permit<Wait>RootLogin<Wait> yes>><Wait>', # when typing to much at once, chars get lost
     '/etc/ssh/ss<Wait>hd_config<Enter><Wait>',
     'passwd<Enter><Wait><Wait>',
     'vagrant<Enter><Wait>',
