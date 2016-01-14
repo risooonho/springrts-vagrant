@@ -10,3 +10,5 @@
 /home/.bash_history
 /home/.bash_aliases
 *.swp
+/package.box
+/iso

@@ -46,6 +46,13 @@ Vagrant.configure(2) do |config|
     virtualbox.customize ["setextradata", :id, "--VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
   end
 
+
+  # see https://github.com/pradels/vagrant-libvirt#create-vagrantfile
+  config.vm.provider :libvirt do |libvirt|
+    #libvirt.host = "localhost"
+    libvirt.storage_pool_name = "disks"
+  end
+
   config.vm.provision :shell, :path => "shell/initial-setup.sh"
   config.vm.provision :shell, :path => "shell/update-puppet.sh"
   config.vm.provision :shell, :path => "shell/librarian-puppet-vagrant.sh"

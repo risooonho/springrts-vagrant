@@ -8,10 +8,20 @@ Startings of a Vagrant environment for building spring
  - Virtualbox or libvirt / kvm
 
 
+## creating the basic image with veewee
+  sudo apt-get install ruby-dev build-essentials
+  gem install vagrant
+  gem install fog-core --version 1.29.0
+  gem install fog --version 1.29.0
+  gem install veewee gog-libvirt
+  veewee kvm build 'spring-vm' --workdir=.
 
-## Running with libvirt
 
+## Running with libvirt (as example on ubuntu)
+
+ sudo apt-get install libvirt-dev
  vagrant plugin uninstall vagrant-libvirt
+ vagrant up --provider=libvirt
 
 ## Usage
 
