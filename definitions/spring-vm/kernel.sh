@@ -13,7 +13,7 @@ DATAEOF
 
 # get, configure, compile and install the kernel and modules
 chroot "$chroot" /bin/bash <<DATAEOF
-emerge =sys-kernel/gentoo-sources-$kernel_version sys-kernel/genkernel gentoolkit
+emerge =sys-kernel/gentoo-sources sys-kernel/genkernel app-portage/gentoolkit
 
 cd /usr/src/linux
 # use a default configuration as a starting point

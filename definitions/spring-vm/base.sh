@@ -81,8 +81,8 @@ EMERGE_DEFAULT_OPTS="-j$nr_cpus --quiet-build=y"
 FEATURES="\${FEATURES} parallel-fetch"
 USE="nls cjk unicode"
 
-PYTHON_TARGETS="python2_7 python3_2 python3_3"
-USE_PYTHON="3.2 2.7"
+PYTHON_TARGETS="python2_7 python3_4"
+USE_PYTHON="3.4 2.7"
 
 # english only
 LINGUAS="en"
