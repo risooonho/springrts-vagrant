@@ -17,14 +17,14 @@ Veewee::Definition.declare({
   :boot_wait => "10",
   :boot_cmd_sequence => [
     '<Wait>' * 2,
-    'gentoo-nofb<Spacebar>nokeymap<Enter>',
+    'gentoo-nofb nokeymap<Enter>',
     '<Wait>' * 40,
-    'echo<Spacebar>PermitRootLogin<Spacebar>yes>><Wait>', # when typing to much at once, chars get lost
-    '/etc/ssh/sshd_config<Enter><Wait>',
+    'echo Permit<Wait>RootLogin yes>><Wait>', # when typing to much at once, chars get lost
+    '/etc/ssh/ss<Wait>hd_config<Enter><Wait>',
     'passwd<Enter><Wait><Wait>',
     'vagrant<Enter><Wait>',
     'vagrant<Enter><Wait><Wait>',
-    'service<Spacebar>sshd<Spacebar>start<Enter>',
+    'service <Wait>sshd <Wait>start<Enter>',
   ],
 #  :kickstart_port    => '7122',
 #  :kickstart_timeout => 300,
