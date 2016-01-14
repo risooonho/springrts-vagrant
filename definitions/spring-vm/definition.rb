@@ -19,12 +19,11 @@ Veewee::Definition.declare({
     '<Wait>' * 2,
     'gentoo-nofb nokeymap<Enter>',
     '<Wait>' * 40,
-    'echo Permit<Wait>RootLogin<Wait> yes>><Wait>', # when typing to much at once, chars get lost
-    '/etc/ssh/ss<Wait>hd_config<Enter><Wait>',
+    'echo Pe<Wait><Wait>rmitRoo<Wait>tLogin <Wait>yes>>/e<Wait>tc/ssh/<Wait>sshd_c<Wait>onfig<Enter><Wait>', # when typing to much at once, chars get lost
     'passwd<Enter><Wait><Wait>',
-    'vagrant<Enter><Wait>',
     'vagrant<Enter><Wait><Wait>',
-    'service <Wait>sshd <Wait>start<Enter>',
+    'vagrant<Enter><Wait><Wait><Wait>',
+    'service<Wait> sshd <Wait>start<Enter>',
   ],
 #  :kickstart_port    => '7122',
 #  :kickstart_timeout => 300,
