@@ -12,6 +12,6 @@ dev-util/kbuild ~x86 ~amd64
 DATAEOF
 
 # get, configure, compile and install the kernel and modules
-emerge sys-kernel/gentoo-sources sys-kernel/genkernel app-portage/gentoolkit
+chroot "$chroot" emerge sys-kernel/gentoo-sources sys-kernel/genkernel app-portage/gentoolkit
 
-genkernel --install --symlink
+chroot "$chroot" genkernel --install --symlink
