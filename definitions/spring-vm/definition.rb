@@ -4,6 +4,10 @@ template_uri   = 'http://distfiles.gentoo.org/releases/amd64/autobuilds/latest-i
 template_build = Net::HTTP.get_response(URI.parse(template_uri)).body
 template_build = /^(([^#].*)\/(.*)) [0-9]+/.match(template_build)
 
+filename = install-amd64-minimal-20160114.iso
+# uncomment for newest gentoo iso
+#filename = {template_build[1]}
+
 Veewee::Definition.declare({
   :cpu_count   => 2,
   :memory_size => '1024',
@@ -11,8 +15,8 @@ Veewee::Definition.declare({
   :disk_format => 'VDI',
   :hostiocache => 'off',
   :os_type_id  => 'Gentoo_64',
-  :iso_file    => template_build[3],
-  :iso_src     => "http://distfiles.gentoo.org/releases/amd64/autobuilds/#{template_build[1]}",
+  :iso_file    => filename,
+  :iso_src     => "http://distfiles.gentoo.org/releases/amd64/autobuilds/#{filename}",
   :iso_download_timeout => 1000,
   :boot_wait => "10",
   :boot_cmd_sequence => [
