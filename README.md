@@ -9,6 +9,8 @@ Startings of a Vagrant environment for building spring
 
 
 ## creating the basic image with veewee
+
+
   sudo apt-get install ruby-dev build-essentials
   gem install vagrant
   gem install fog-core --version 1.29.0
