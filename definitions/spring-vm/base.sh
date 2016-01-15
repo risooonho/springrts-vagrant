@@ -153,3 +153,7 @@ DATAEOF
 # update portage tree to most current state
 # emerge-webrsync is recommended by Gentoo for first sync
 chroot "$chroot" emerge-webrsync
+
+# mark all news as read
+chroot "$chroot" eselect news read all --quiet
+
