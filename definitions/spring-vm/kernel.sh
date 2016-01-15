@@ -14,4 +14,4 @@ DATAEOF
 # get, configure, compile and install the kernel and modules
 chroot "$chroot" emerge sys-kernel/gentoo-sources sys-kernel/genkernel app-portage/gentoolkit
 
-chroot "$chroot" genkernel --install --symlink
+chroot "$chroot" genkernel --install --symlink all
