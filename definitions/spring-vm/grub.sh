@@ -19,6 +19,6 @@ env-update && \
 grep -v rootfs /proc/mounts > /etc/mtab && \
 mkdir -p /boot/grub2 && \
 ln -sf /boot/grub2 /boot/grub && \
-grub2-mkconfig -o /boot/grub/grub.cfg && \
-grub2-install --no-floppy /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg && \
+grub-install --no-floppy /dev/sda
 DATAEOF

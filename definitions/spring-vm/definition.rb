@@ -4,7 +4,7 @@ template_uri   = 'http://distfiles.gentoo.org/releases/amd64/autobuilds/latest-i
 template_build = Net::HTTP.get_response(URI.parse(template_uri)).body
 template_build = /^(([^#].*)\/(.*)) [0-9]+/.match(template_build)
 
-filename = "install-amd64-minimal-20160114.iso"
+filename = "install-amd64-minimal-20160811.iso"
 # uncomment for newest gentoo iso
 #filename = {template_build[1]}
 
@@ -47,7 +47,7 @@ Veewee::Definition.declare({
 #    'usb.sh',
 #    'git.sh',
 #    'subversion.sh',
-#    'virtualbox.sh',
+    'virtualbox.sh',
     'vagrant.sh',
 #    'ruby.sh',
 #    'add_chef.sh',
