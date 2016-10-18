@@ -9,7 +9,7 @@ media-libs/giflib static-libs
 media-libs/tiff static-libs
 dev-libs/boost static-libs python
 media-libs/jpeg  static-libs
-media-libs/libsdl2 -audio opengl static-libs X
+media-libs/libsdl2 -sound opengl static-libs X
 media-libs/libvorbis static-libs
 media-libs/libogg static-libs
 media-libs/freetype static-libs autohinter
