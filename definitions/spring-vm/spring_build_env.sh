@@ -71,13 +71,6 @@ chroot "$chroot" /bin/bash <<DATAEOF
 emerge sys-libs/zlib media-libs/devil dev-libs/boost media-libs/libjpeg-turbo media-libs/libsdl2 \
 media-libs/libvorbis media-libs/freetype media-libs/glew media-libs/libpng x11-libs/libXcursor \
 app-arch/bzip2 x11-libs/libXdmcp x11-libs/libXrender x11-libs/libX11 x11-libs/libXfixes \
-x11-libs/libxcb x11-libs/libXau net-misc/curl sys-libs/libunwind dev-java/icedtea-bin app-arch/p7zip media-libs/openal \
-dev-libs/expat media-libs/fontconfig
-DATAEOF
-
-# hack libunwind to prevent multiple definition of '_Unwind_Resume'
-chroot "$chroot" /bin/bash <<DATAEOF
-sed -i '/--enable-cxx-exceptions/d' /usr/portage/sys-libs/libunwind/libunwind-1.1-r1.ebuild
-ebuild /usr/portage/sys-libs/libunwind/libunwind-1.1-r1.ebuild digest
-ebuild /usr/portage/sys-libs/libunwind/libunwind-1.1-r1.ebuild qmerge
+x11-libs/libxcb x11-libs/libXau net-misc/curl dev-java/icedtea-bin app-arch/p7zip media-libs/openal \
+dev-libs/expat media-libs/fontconfig =sys-libs/libunwind-0.99-r1
 DATAEOF
