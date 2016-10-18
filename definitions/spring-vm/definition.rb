@@ -10,7 +10,7 @@ filename = "install-amd64-minimal-20160811.iso"
 
 Veewee::Definition.declare({
   :cpu_count   => 2,
-  :memory_size => '1024',
+  :memory_size => '2048',
   :disk_size   => '20280',
   :disk_format => 'VDI',
   :hostiocache => 'off',
@@ -58,6 +58,7 @@ Veewee::Definition.declare({
 #    'nfs.sh',
     'grub.sh',
     'spring_build_env.sh',
+    'spring_buildbot.sh',
     'wipe_sources.sh',
     'cleanup.sh',
     'zerodisk.sh',
