@@ -15,7 +15,6 @@ media-libs/libogg static-libs
 media-libs/freetype static-libs autohinter
 media-libs/glew static-libs
 media-libs/libpng static-libs
-media-libs/openal static-libs
 x11-libs/libXcursor static-libs
 app-arch/bzip2 static-libs
 x11-libs/libXdmcp static-libs
@@ -50,7 +49,6 @@ media-libs/libsdl2 spring-static-buildslave
 media-libs/libvorbis spring-static-buildslave
 media-libs/freetype spring-static-buildslave
 media-libs/glew spring-static-buildslave
-media-libs/openal spring-static-buildslave
 media-libs/libpng spring-static-buildslave
 sys-devel/gcc spring-static-buildslave
 x11-libs/libXcursor spring-static-buildslave
