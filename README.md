@@ -10,11 +10,11 @@ Startings of a Vagrant environment for building spring
 
 ## creating the basic image with veewee
 
-     sudo apt-get install ruby-dev build-essentials
-     gem install vagrant
-     gem install fog-core --version 1.29.0
-     gem install fog --version 1.29.0
-     gem install veewee gog-libvirt
+     sudo apt-get install ruby-gems build-essential libvirt-dev
+     sudo gem install fog-core --version 1.29.0
+     sudo gem install fog --version 1.29.0
+     sudo gem install ruby-libvirt
+     sudo gem install veewee
      LC_ALL=C veewee kvm build 'spring-vm' --workdir=.
 
 
