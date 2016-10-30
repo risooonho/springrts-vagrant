@@ -37,6 +37,6 @@ export password_root=vagrant
 export password_vagrant=vagrant
 
 # the public key for vagrants ssh
-export vagrant_ssh_key_url="https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub"
-export disk1=/dev/vda
+export vagrant_ssh_key_url="https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub"
+export disk1=/dev/sda
 DATAEOF

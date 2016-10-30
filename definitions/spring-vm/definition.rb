@@ -4,13 +4,13 @@ template_uri   = 'http://distfiles.gentoo.org/releases/amd64/autobuilds/latest-i
 template_build = Net::HTTP.get_response(URI.parse(template_uri)).body
 template_build = /^(([^#].*)\/(.*)) [0-9]+/.match(template_build)
 
-filename = "install-amd64-minimal-20160114.iso"
+filename = "install-amd64-minimal-20160811.iso"
 # uncomment for newest gentoo iso
 #filename = {template_build[1]}
 
 Veewee::Definition.declare({
   :cpu_count   => 2,
-  :memory_size => '1024',
+  :memory_size => '2048',
   :disk_size   => '20280',
   :disk_format => 'VDI',
   :hostiocache => 'off',
@@ -45,18 +45,20 @@ Veewee::Definition.declare({
     'base.sh',
     'kernel.sh',
 #    'usb.sh',
-#    'git.sh',
+    'git.sh',
 #    'subversion.sh',
-#    'virtualbox.sh',
+    'virtualbox.sh',
     'vagrant.sh',
-#    'ruby.sh',
-#    'add_chef.sh',
-#    'add_puppet.sh',
+    'ruby.sh',
+    'add_chef.sh',
+    'add_puppet.sh',
     'add_vim.sh',
     'cron.sh',
     'syslog.sh',
 #    'nfs.sh',
     'grub.sh',
+    'spring_build_env.sh',
+    'spring_buildbot.sh',
     'wipe_sources.sh',
     'cleanup.sh',
     'zerodisk.sh',

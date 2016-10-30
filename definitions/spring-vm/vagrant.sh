@@ -19,6 +19,8 @@ mkdir -p "$chroot/root/.ssh" 2> /dev/null
 # add vagrant user
 chroot $chroot /bin/bash <<DATAEOF
 groupadd -r vagrant
+groupadd -r vboxsf
+groupadd -r vboxguest
 useradd -m -r vagrant -g vagrant -G wheel,vboxsf,vboxguest -c 'Vagrant user'
 
 # set passwords (for after reboot)
@@ -83,7 +85,7 @@ echo LC_TYPE=\"$locale\" >> /etc/env.d/02locale
 env-update && source /etc/profile
 DATAEOF
 
-# make hostname shorter 
+# make hostname shorter
 cat <<DATAEOF > "$chroot/etc/conf.d/hostname"
 # Set to the hostname of this machine
 hostname="local"
