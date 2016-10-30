@@ -4,6 +4,9 @@ source /etc/profile
 mkdir -p "$chroot/etc/portage/package.use/"
 rm -f "$chroot/etc/portage/package.use/spring-static-buildslave"
 cat <<DATAEOF >> "$chroot/etc/portage/package.use/spring-static-buildslave"
+
+mkdir -p "$chroot/etc/portage/package.use"
+cat <<DATAEOF > "$chroot/etc/portage/package.use/spring-static-buildslave"
 sys-libs/zlib static-libs minizip
 media-libs/devil static-libs opengl png jpeg tiff gif X
 media-libs/giflib static-libs
@@ -31,19 +34,16 @@ dev-libs/openssl static-libs bindist
 sys-libs/libunwind static-libs
 DATAEOF
 
-
-mkdir -p "$chroot/etc/portage/env/"
-rm -f "$chroot/etc/portage/env/spring-static-buildslave"
-cat <<DATAEOF >> "$chroot/etc/portage/env/spring-static-buildslave"
+mkdir -p "$chroot/etc/portage/env"
+cat <<DATAEOF > "$chroot/etc/portage/env/spring-static-buildslave"
 CFLAGS="${CFLAGS} -fPIC"
 CXXFLAGS="${CXXFLAGS} -fPIC"
 LDFLAGS="${LDFLAGS} -fPIC"
 DATAEOF
 
 
-mkdir -p "$chroot/etc/portage/package.env/"
-rm -f "$chroot/etc/portage/package.env/spring-static-buildslave"
-cat <<DATAEOF >> "$chroot/etc/portage/package.env/spring-static-buildslave"
+mkdir -p "$chroot/etc/portage/package.env"
+cat <<DATAEOF > "$chroot/etc/portage/package.env/spring-static-buildslave"
 sys-libs/zlib spring-static-buildslave
 media-libs/devil spring-static-buildslave
 media-libs/giflib spring-static-buildslave
@@ -60,8 +60,7 @@ sys-devel/gcc spring-static-buildslave
 x11-libs/libXcursor spring-static-buildslave
 DATAEOF
 
-rm -f "$chroot/etc/portage/package.use/jdk"
-cat <<DATAEOF >> "$chroot/etc/portage/package.use/jdk"
+cat <<DATAEOF > "$chroot/etc/portage/package.use/jdk"
 >=x11-libs/cairo-1.14.6 X
 >=x11-libs/gdk-pixbuf-2.34.0 X
 DATAEOF
