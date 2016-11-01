@@ -31,11 +31,6 @@ mount --rbind /dev "$chroot/dev"
 cp /etc/resolv.conf "$chroot/etc/"
 date -u > "$chroot/etc/vagrant_box_build_time"
 
-# retrieve and extract latest portage tarball
-chroot "$chroot" wget --tries=5 "${portageurl}"
-chroot "$chroot" tar -xjpf portage-latest.tar.bz2 -C /usr
-chroot "$chroot" rm -rf portage-latest.tar.bz2
-chroot "$chroot" env-update
 
 # bring up network interface and sshd on boot (Alt. for new systemd naming scheme, enp0s3)
 #chroot "$chroot" /bin/bash <<DATAEOF
@@ -153,6 +148,7 @@ DATAEOF
 # update portage tree to most current state
 # emerge-webrsync is recommended by Gentoo for first sync
 chroot "$chroot" emerge-webrsync
+chroot "$chroot" env-update
 
 # mark all news as read
 chroot "$chroot" eselect news read all --quiet

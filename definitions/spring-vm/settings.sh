@@ -14,7 +14,6 @@ cat <<DATAEOF > "/etc/profile.d/veewee.sh"
 
 export stage3url="${distfiles_url}/releases/${build_arch}/autobuilds/${stage3current}"
 export stage3file=${stage3current##*/}
-export portageurl="${distfiles_url}/snapshots/portage-latest.tar.bz2"
 
 # these two (configuring the compiler) and the stage3 url can be changed to build a 32 bit system
 export accept_keywords="amd64"
