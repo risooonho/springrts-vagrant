@@ -1,9 +1,6 @@
 #!/bin/bash
 source /etc/profile
 
-mkdir -p "$chroot/etc/portage/package.use/"
-cat <<DATAEOF > "$chroot/etc/portage/package.use/spring-static-buildslave"
-
 mkdir -p "$chroot/etc/portage/package.use"
 cat <<DATAEOF > "$chroot/etc/portage/package.use/spring-static-buildslave"
 sys-libs/zlib static-libs minizip
