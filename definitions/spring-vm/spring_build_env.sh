@@ -3,31 +3,31 @@ source /etc/profile
 
 mkdir -p "$chroot/etc/portage/package.use"
 cat <<DATAEOF > "$chroot/etc/portage/package.use/spring-static-buildslave"
-sys-libs/zlib static-libs abi_x86_32 minizip
-media-libs/devil static-libs abi_x86_32 opengl png jpeg tiff gif X
-media-libs/giflib static-libs abi_x86_32
-media-libs/tiff static-libs abi_x86_32
-dev-libs/boost static-libs abi_x86_32 python
-dev-libs/expat static-libs abi_x86_32
-media-libs/libjpeg-turbo static-libs abi_x86_32
-media-libs/libsdl2 static-libs abi_x86_32 -sound opengl X
-media-libs/libvorbis static-libs abi_x86_32
-media-libs/libogg static-libs abi_x86_32
-media-libs/freetype static-libs abi_x86_32 autohinter
-media-libs/glew static-libs abi_x86_32
-media-libs/libpng static-libs abi_x86_32
-media-libs/fontconfig static-libs abi_x86_32
-x11-libs/libXcursor static-libs abi_x86_32
-app-arch/bzip2 static-libs abi_x86_32
-x11-libs/libXdmcp static-libs abi_x86_32
-x11-libs/libXrender static-libs abi_x86_32
-x11-libs/libX11 static-libs abi_x86_32
-x11-libs/libXfixes static-libs abi_x86_32
-x11-libs/libxcb static-libs abi_x86_32
-x11-libs/libXau static-libs abi_x86_32
-net-misc/curl static-libs abi_x86_32
-dev-libs/openssl static-libs abi_x86_32 bindist
-sys-libs/libunwind static-libs abi_x86_32
+sys-libs/zlib static-libs minizip
+media-libs/devil static-libs opengl png jpeg tiff gif X
+media-libs/giflib static-libs
+media-libs/tiff static-libs
+dev-libs/boost static-libs python
+dev-libs/expat static-libs
+media-libs/libjpeg-turbo  static-libs
+media-libs/libsdl2 -sound opengl static-libs X
+media-libs/libvorbis static-libs
+media-libs/libogg static-libs
+media-libs/freetype static-libs autohinter
+media-libs/glew static-libs
+media-libs/libpng static-libs
+media-libs/fontconfig static-libs
+x11-libs/libXcursor static-libs
+app-arch/bzip2 static-libs
+x11-libs/libXdmcp static-libs
+x11-libs/libXrender static-libs
+x11-libs/libX11 static-libs
+x11-libs/libXfixes static-libs
+x11-libs/libxcb static-libs
+x11-libs/libXau static-libs
+net-misc/curl static-libs
+dev-libs/openssl static-libs bindist
+sys-libs/libunwind static-libs
 DATAEOF
 
 mkdir -p "$chroot/etc/portage/package.mask"
