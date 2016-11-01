@@ -12,6 +12,9 @@ chroot "$chroot" emerge grub
 # tweak timeout
 chroot "$chroot" sed -i "s/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/g" /etc/default/grub
 
+# load virtio drivers to allow kvm boot
+chroot "$chroot" sed -i "s/#GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX=doload=virtio_pci,virtio_blk/g" /etc/default/grub
+
 # make the disk bootable
 chroot "$chroot" /bin/bash <<DATAEOF
 source /etc/profile && \
