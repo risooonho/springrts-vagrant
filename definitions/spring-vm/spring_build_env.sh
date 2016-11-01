@@ -2,8 +2,7 @@
 source /etc/profile
 
 mkdir -p "$chroot/etc/portage/package.use/"
-rm -f "$chroot/etc/portage/package.use/spring-static-buildslave"
-cat <<DATAEOF >> "$chroot/etc/portage/package.use/spring-static-buildslave"
+cat <<DATAEOF > "$chroot/etc/portage/package.use/spring-static-buildslave"
 
 mkdir -p "$chroot/etc/portage/package.use"
 cat <<DATAEOF > "$chroot/etc/portage/package.use/spring-static-buildslave"
