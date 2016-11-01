@@ -151,5 +151,5 @@ chroot "$chroot" emerge-webrsync
 chroot "$chroot" env-update
 
 # mark all news as read
-chroot "$chroot" eselect news read all --quiet
+chroot "$chroot" eselect news read --quiet all
 

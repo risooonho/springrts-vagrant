@@ -15,6 +15,6 @@ rm -rf /root/.gem
 #rm -rf /root/*
 
 # skip all the news
-eselect news read all
+eselect news read --quiet all
 
 DATAEOF
