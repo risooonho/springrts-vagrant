@@ -26,7 +26,7 @@ x11-libs/libXfixes static-libs
 x11-libs/libxcb static-libs
 x11-libs/libXau static-libs
 net-misc/curl static-libs
-dev-libs/openssl static-libs bindist
+dev-libs/openssl static-libs
 sys-libs/libunwind static-libs
 DATAEOF
 
