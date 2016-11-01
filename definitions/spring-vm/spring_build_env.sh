@@ -30,6 +30,11 @@ dev-libs/openssl static-libs bindist
 sys-libs/libunwind static-libs
 DATAEOF
 
+mkdir -p "$chroot/etc/portage/package.mask"
+cat <<DATAEOF > "$chroot/etc/portage/package.mask/spring-static-buildslave"
+>=sys-libs/libunwind-1.0
+DATAEOF
+
 mkdir -p "$chroot/etc/portage/env"
 cat <<DATAEOF > "$chroot/etc/portage/env/spring-static-buildslave"
 CFLAGS="${CFLAGS} -fPIC"
@@ -67,5 +72,5 @@ emerge sys-libs/zlib media-libs/devil dev-libs/boost media-libs/libjpeg-turbo me
 media-libs/libvorbis media-libs/freetype media-libs/glew media-libs/libpng x11-libs/libXcursor \
 app-arch/bzip2 x11-libs/libXdmcp x11-libs/libXrender x11-libs/libX11 x11-libs/libXfixes \
 x11-libs/libxcb x11-libs/libXau net-misc/curl dev-java/icedtea-bin app-arch/p7zip media-libs/openal \
-dev-libs/expat media-libs/fontconfig =sys-libs/libunwind-0.99-r1
+dev-libs/expat media-libs/fontconfig sys-libs/libunwind
 DATAEOF
