@@ -1,13 +1,12 @@
 require 'net/http'
 
-template_uri   = 'http://distfiles.gentoo.org/releases/amd64/autobuilds/latest-install-amd64-minimal.txt'
-template_build = Net::HTTP.get_response(URI.parse(template_uri)).body
-template_build = /^(([^#].*)\/(.*)) [0-9]+/.match(template_build)
+#arch = "x86"
+arch = "amd64"
+template_uri   = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest-install-#{arch}-minimal.txt"
+template_build = Net::HTTP.get_response(URI.parse(template_uri)).body.split(/\n/).last.split(/\ /)
 
-release = "20161027"
-filename = "install-amd64-minimal-#{release}.iso"
-# uncomment for newest gentoo iso
-#filename = {template_build[1]}
+iso_file = template_build.first.split(/\//).last,
+iso_src= "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build.first}"
 
 Veewee::Definition.declare({
   :cpu_count   => 2,
@@ -16,8 +15,8 @@ Veewee::Definition.declare({
   :disk_format => 'VDI',
   :hostiocache => 'off',
   :os_type_id  => 'Gentoo_64',
-  :iso_file    => filename,
-  :iso_src     => "http://distfiles.gentoo.org/releases/amd64/autobuilds/#{release}/#{filename}",
+  :iso_file    => iso_file,
+  :iso_src     => iso_src,
   :iso_download_timeout => 1000,
   :boot_wait => "10",
   :boot_cmd_sequence => [
