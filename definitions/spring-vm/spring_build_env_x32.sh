@@ -27,14 +27,17 @@ mkdir -p "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.mask"
 cat <<DATAEOF > "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.mask/spring-static-buildslave"
 >sys-libs/glibc-2.17
 >=dev-lang/python-2.8
+>=sys-libs/libunwind-1.0
 DATAEOF
+
+# because of --nodeps order of packages matter!
 
 chroot "$chroot" /bin/bash <<DATAEOF
 ARCH=x86 emerge-i686-pc-linux-gnu --nodeps \
 dev-libs/libffi \
-dev-lang/python \
-dev-util/pkgconfig \
 x11-misc/util-macros \
+dev-libs/glib \
+dev-util/pkgconfig \
 sys-libs/zlib \
 app-arch/bzip2 \
 dev-libs/boost \
@@ -45,8 +48,9 @@ media-libs/freetype \
 media-libs/libpng \
 media-libs/openal \
 dev-libs/openssl \
+dev-lang/python \
 net-misc/curl \
-=sys-libs/libunwind-0.99-r1 \
+sys-libs/libunwind \
 x11-libs/libXdmcp \
 x11-libs/libXau \
 =x11-libs/libxcb-1.10 \
