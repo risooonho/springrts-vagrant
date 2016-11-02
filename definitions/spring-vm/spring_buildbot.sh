@@ -8,8 +8,7 @@ useradd -s /bin/false -d /home/buildbot -m buildbot
 eselect python set python2.7
 DATAEOF
 
-rm -f "$chroot/etc/conf.d/buildslave"
-cat <<DATAEOF >> "$chroot/etc/conf.d/buildslave"
+cat <<DATAEOF > "$chroot/etc/conf.d/buildslave"
 # Path to the build slave's basedir.
 BASEDIR="/home/buildbot"
 
