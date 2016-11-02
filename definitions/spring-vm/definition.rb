@@ -58,9 +58,9 @@ Veewee::Definition.declare({
     'grub.sh',
     'spring_build_env.sh',
     'spring_buildbot.sh',
-    'wipe_sources.sh',
-    'cleanup.sh',
-    'zerodisk.sh',
+#    'wipe_sources.sh',
+#    'cleanup.sh',
+#    'zerodisk.sh',
     'reboot.sh'
   ],
   :postinstall_timeout => 10000
