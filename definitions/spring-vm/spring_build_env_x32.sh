@@ -2,7 +2,6 @@
 source /etc/profile
 
 chroot "$chroot" /bin/bash <<DATAEOF
-
 emerge crossdev
 USE="cxx -fortran" crossdev --stable --target i686 --gcc 4.9.3 --libc 2.17
 
@@ -25,14 +24,15 @@ USE="${USE} -pam -llvm -tools -uuid -kmod -classic -dri3 -egl -gallium -gbm -npt
 DATAEOF
 
 mkdir -p "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.mask"
-cat <<DATAEOF > "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.mask"
+cat <<DATAEOF > "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.mask/spring-static-buildslave"
 >sys-libs/glibc-2.17
+>=dev-lang/python-2.8
 DATAEOF
 
 chroot "$chroot" /bin/bash <<DATAEOF
-emerge-i686-pc-linux-gnu -va --nodeps
+ARCH=x86 emerge-i686-pc-linux-gnu --nodeps \
 dev-libs/libffi \
-=dev-lang/python-2.7.11-r2 \
+dev-lang/python \
 dev-util/pkgconfig \
 x11-misc/util-macros \
 sys-libs/zlib \
