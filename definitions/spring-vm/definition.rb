@@ -6,7 +6,11 @@ template_uri   = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest
 template_build = Net::HTTP.get_response(URI.parse(template_uri)).body.split(/\n/).last.split(/\ /)
 
 iso_file = template_build.first.split(/\//).last,
-iso_src= "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build.first}"
+iso_src = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build.first}"
+
+# uncomment / adjust for "offline" mode
+#iso_file = "install-x86-minimal-20161101.iso"
+#iso_src = "http://distfiles.gentoo.org/releases/x86/autobuilds/20161101/install-x86-minimal-20161101.iso"
 
 Veewee::Definition.declare({
   :cpu_count   => 2,
