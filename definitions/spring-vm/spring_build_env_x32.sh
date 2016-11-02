@@ -10,38 +10,18 @@ DATAEOF
 
 mkdir -p "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.use"
 cat <<DATAEOF >  "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.use/spring-static-buildslave"
-sys-libs/zlib static-libs minizip
-media-libs/devil static-libs opengl png jpeg tiff gif X
-media-libs/giflib static-libs
-media-libs/tiff static-libs -cxx
-dev-libs/boost static-libs -python
-media-libs/jpeg  static-libs
-media-libs/libsdl2 -audio opengl static-libs X
-media-libs/libvorbis static-libs
-media-libs/libogg static-libs
-media-libs/freetype static-libs autohinter
-media-libs/glew static-libs
-media-libs/libpng static-libs
-x11-libs/libXcursor static-libs
-app-arch/bzip2 static-libs
-x11-libs/libXdmcp static-libs
-x11-libs/libXrender static-libs
-x11-libs/libX11 static-libs
-x11-libs/libXfixes static-libs
-x11-libs/libxcb static-libs
-x11-libs/libXau static-libs
-dev-libs/gmp static-libs
-dev-libs/mpfr static-libs
-dev-libs/mpc static-libs
-net-misc/curl static-libs
-dev-libs/openssl static-libs
+sys-libs/zlib minizip
+media-libs/devil opengl png jpeg tiff gif X
+media-libs/tiff -cxx
+dev-libs/boost -python
+media-libs/libsdl2 -audio opengl X
+media-libs/freetype autohinter
 dev-java/oracle-jdk-bin -X -fontconfig
-sys-libs/libunwind static-libs
 DATAEOF
 
 cat <<DATAEOF >> "$chroot/usr/i686-pc-linux-gnu/etc/portage/make.conf"
 PYTHON_TARGETS="python2_7"
-USE="${USE} -pam -llvm -tools -uuid -kmod -classic -dri3 -egl -gallium -gbm -nptl -udev -fortran"
+USE="${USE} -pam -llvm -tools -uuid -kmod -classic -dri3 -egl -gallium -gbm -nptl -udev -fortran static-libs"
 DATAEOF
 
 mkdir -p "$chroot/usr/i686-pc-linux-gnu/etc/portage/package.mask"
