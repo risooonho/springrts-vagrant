@@ -57,6 +57,7 @@ Veewee::Definition.declare({
     'syslog.sh',
     'grub.sh',
     'spring_build_env.sh',
+#    'spring_build_env_x32.sh',
     'spring_buildbot.sh',
 #    'wipe_sources.sh',
 #    'cleanup.sh',
