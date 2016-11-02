@@ -74,7 +74,7 @@ ACCEPT_KEYWORDS="$accept_keywords"
 MAKEOPTS="-j$((1 + $nr_cpus)) -l$nr_cpus.5"
 EMERGE_DEFAULT_OPTS="-j$nr_cpus --quiet-build=y"
 FEATURES="\${FEATURES} parallel-fetch"
-USE="nls cjk unicode"
+USE="nls cjk unicode multitarget"
 ABI_X86="32 64"
 
 PYTHON_TARGETS="python2_7 python3_4"
