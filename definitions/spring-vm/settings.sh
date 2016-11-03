@@ -1,23 +1,35 @@
 # settings that will be shared between all scripts
 
-# distfiles source
-distfiles_url=http://distfiles.gentoo.org
+source .veewee_params
 
-build_arch="amd64"
-build_proc="amd64"
+echo "arch: $arch"
+echo "stage3url: $stage3url"
+echo "stage3file: $stage3file"
 
-# stage 3 filename and full url
-# retrieve from Gentoo current autobuild txt - these change regularly
-stage3current=$(curl -s ${distfiles_url}/releases/${build_arch}/autobuilds/latest-stage3-${build_proc}.txt |egrep -o '^[^  ^#]+')
+case $arch in
+	x86)
+		build_arch="x86"
+		build_proc="x86"
+		chost=x86_i686-pc-linux-gnu
+	;;
+	amd64)
+		build_arch="amd64"
+		build_proc="amd64"
+		chost="x86_64-pc-linux-gnu"
+	;;
+	*)
+	echo Unknown arch set: $arch
+	exit 1
+esac
 
 cat <<DATAEOF > "/etc/profile.d/veewee.sh"
 
-export stage3url="${distfiles_url}/releases/${build_arch}/autobuilds/${stage3current}"
-export stage3file=${stage3current##*/}
+export stage3url=${stage3url}
+export stage3file=${stage3file}
 
 # these two (configuring the compiler) and the stage3 url can be changed to build a 32 bit system
-export accept_keywords="amd64"
-export chost="x86_64-pc-linux-gnu"
+export accept_keywords="${arch}"
+export chost="${chost}"
 
 # timezone (as a subdirectory of /usr/share/zoneinfo)
 export timezone="UTC"

@@ -1,37 +1,42 @@
 require 'net/http'
 
-#arch = "x86"
-arch = "amd64"
+arch = "x86"
+#arch = "amd64"
 template_uri   = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest-install-#{arch}-minimal.txt"
-template_build = Net::HTTP.get_response(URI.parse(template_uri)).body.split(/\n/).last.split(/\ /)
+template_build = Net::HTTP.get_response(URI.parse(template_uri)).body.split("\n").last.split(" ").first
 
-iso_file = template_build.first.split(/\//).last,
-iso_src = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build.first}"
+filename = template_build.split("/").last
+url = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build}"
 
 # uncomment / adjust for "offline" mode
-#iso_file = "install-x86-minimal-20161101.iso"
-#iso_src = "http://distfiles.gentoo.org/releases/x86/autobuilds/20161101/install-x86-minimal-20161101.iso"
+#filename = "install-x86-minimal-20161101.iso"
+#url = "http://distfiles.gentoo.org/releases/x86/autobuilds/20161101/install-x86-minimal-20161101.iso"
+
+# get url for gentoo stage3 downloada
+if arch == "amd64"
+	template_uri = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest-stage3-#{arch}.txt"
+else
+	template_uri = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest-stage3-i686.txt"
+end
+
+template_build = Net::HTTP.get_response(URI.parse(template_uri)).body.split("\n").last.split(" ").first
+stage3url = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build}"
+stage3file = template_build.split("/").last
 
 Veewee::Definition.declare({
-  :cpu_count   => 2,
-  :memory_size => '2048',
+  :cpu_count   => 8,
+  :memory_size => '8192',
   :disk_size   => '20280',
   :disk_format => 'VDI',
   :hostiocache => 'off',
   :os_type_id  => 'Gentoo_64',
-  :iso_file    => iso_file,
-  :iso_src     => iso_src,
+  :iso_file    => filename,
+  :iso_src     => url,
   :iso_download_timeout => 1000,
   :boot_wait => "10",
   :boot_cmd_sequence => [
     '<Wait>' * 2,
-    'gentoo-nofb nokeymap<Enter>',
-    '<Wait>' * 40,
-    'echo Pe<Wait><Wait>rmitRoo<Wait>tLogin <Wait>yes>>/e<Wait>tc/ssh/<Wait>sshd_c<Wait>onfig<Enter><Wait>', # when typing to much at once, chars get lost
-    'passwd<Enter><Wait><Wait>',
-    'vagrant<Enter><Wait><Wait>',
-    'vagrant<Enter><Wait><Wait><Wait>',
-    'service<Wait> sshd <Wait>start<Enter>',
+    'gentoo-nofb nokeymap dosshd passwd=vagrant<Enter>',
   ],
 #  :kickstart_port    => '7122',
 #  :kickstart_timeout => 300,
@@ -44,6 +49,11 @@ Veewee::Definition.declare({
   :ssh_guest_port    => '22',
   :sudo_cmd          => "cat '%f'|su -",
   :shutdown_cmd      => 'shutdown -hP now',
+  :params => {
+     :arch => arch,
+     :stage3url => stage3url,
+     :stage3file => stage3file,
+  },
   :postinstall_files => [
     'settings.sh',
     'base.sh',
