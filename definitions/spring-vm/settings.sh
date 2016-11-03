@@ -10,7 +10,7 @@ case $arch in
 	x86)
 		build_arch="x86"
 		build_proc="x86"
-		chost=x86_i686-pc-linux-gnu
+		chost=i686-pc-linux-gnu
 	;;
 	amd64)
 		build_arch="amd64"
