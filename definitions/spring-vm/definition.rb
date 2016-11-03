@@ -24,8 +24,8 @@ stage3url = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_
 stage3file = template_build.split("/").last
 
 Veewee::Definition.declare({
-  :cpu_count   => 8,
-  :memory_size => '8192',
+  :cpu_count   => 2,
+  :memory_size => '2048',
   :disk_size   => '20280',
   :disk_format => 'VDI',
   :hostiocache => 'off',
