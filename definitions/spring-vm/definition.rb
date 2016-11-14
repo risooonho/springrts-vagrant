@@ -15,10 +15,8 @@ url = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build}
 # get url for gentoo stage3 downloada
 if arch == "amd64"
 	template_uri = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest-stage3-#{arch}.txt"
-	os_type_id = 'Gentoo_64'
 else
 	template_uri = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest-stage3-i686.txt"
-	os_type_id = 'Gentoo'
 end
 
 template_build = Net::HTTP.get_response(URI.parse(template_uri)).body.split("\n").last.split(" ").first
@@ -31,7 +29,7 @@ Veewee::Definition.declare({
   :disk_size   => '20280',
   :disk_format => 'VDI',
   :hostiocache => 'off',
-  :os_type_id  => os_type_id,
+  :os_type_id  => 'Gentoo_64',
   :iso_file    => filename,
   :iso_src     => url,
   :iso_download_timeout => 1000,
