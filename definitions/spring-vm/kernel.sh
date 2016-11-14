@@ -7,7 +7,7 @@ sys-kernel/gentoo-sources symlink
 sys-kernel/genkernel -cryptsetup
 DATAEOF
 
-cat <<DATAEOF >> "$chroot/etc/portage/package.accept_keywords/kernel"
+cat <<DATAEOF > "$chroot/etc/portage/package.accept_keywords/kernel"
 dev-util/kbuild ~x86 ~amd64
 DATAEOF
 
@@ -18,5 +18,16 @@ chroot "$chroot" emerge sys-kernel/gentoo-sources sys-kernel/genkernel app-porta
 cat <<DATAEOF >> "$chroot/etc/genkernel.conf"
 MODULES_KVM="virtio virtio_balloon virtio_ring virtio_pci virtio_blk virtio_net"
 DATAEOF
+
+
+
+if [ "$arch" == "x86" ]; then
+
+#hack to make kernel compile work on 32bit cpu with genkernel
+cat <<DATAEOF >> "$chroot/usr/share/genkernel/arch/x86/generated-config"
+CONFIG_64BIT=n
+DATAEOF
+
+fi
 
 chroot "$chroot" genkernel --install --symlink all
