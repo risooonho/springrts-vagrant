@@ -22,6 +22,19 @@ case $arch in
 	exit 1
 esac
 
+ROOTDEVICE=""
+for device in hda sda vda; do
+	if [ -b /dev/$device ]; then
+		ROOTDEVICE=/dev/$device
+	fi
+done
+
+if [ -z "$ROOTDEVICE" ]; then
+	echo "Couldn't detect ROOTDEVICE!"
+	exit 1
+fi
+
+
 cat <<DATAEOF > "/etc/profile.d/veewee.sh"
 
 export stage3url=${stage3url}
@@ -52,5 +65,5 @@ export password_vagrant=vagrant
 
 # the public key for vagrants ssh
 export vagrant_ssh_key_url="https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub"
-export disk1=/dev/sda
+export disk1=$ROOTDEVICE
 DATAEOF
