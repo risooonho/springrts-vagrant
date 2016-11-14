@@ -1,6 +1,11 @@
 #!/bin/bash
 source /etc/profile
 
+groupadd -r vboxsf
+groupadd -r vboxguest
+
+usermod -a -G vboxsf,vboxguest vagrant
+
 # add package keywords
 cat <<DATAEOF >> "$chroot/etc/portage/package.accept_keywords/virtualbox-guest-additions"
 app-emulation/virtualbox-guest-additions ~x86 ~amd64

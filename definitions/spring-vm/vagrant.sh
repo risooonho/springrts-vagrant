@@ -2,16 +2,11 @@
 source /etc/profile
 
 # add default users and groups, setpasswords, configure privileges and install sudo
-# PREREQUISITE: virtualbox guest additions - need the vboxguest group to exist
 mkdir -p "$chroot/home/vagrant/.ssh"
 chmod 700 "$chroot/home/vagrant/.ssh"
 wget --no-check-certificate "$vagrant_ssh_key_url" -O "$chroot/home/vagrant/.ssh/authorized_keys"
 chmod 600 "$chroot/home/vagrant/.ssh/authorized_keys"
 
-# record virtualbox version
-cp -f /root/.vbox_version "$chroot/home/vagrant/.vbox_version"
-vbox_version=$(cat /root/.vbox_version)
-echo "export vbox_version=$vbox_version" >> /etc/profile.d/settings.sh
 cp /etc/profile.d/settings.sh $chroot/etc/profile.d/
 
 mkdir -p "$chroot/root/.ssh" 2> /dev/null
@@ -19,9 +14,7 @@ mkdir -p "$chroot/root/.ssh" 2> /dev/null
 # add vagrant user
 chroot $chroot /bin/bash <<DATAEOF
 groupadd -r vagrant
-groupadd -r vboxsf
-groupadd -r vboxguest
-useradd -m -r vagrant -g vagrant -G wheel,vboxsf,vboxguest -c 'Vagrant user'
+useradd -m -r vagrant -g vagrant -G wheel -c 'Vagrant user'
 
 # set passwords (for after reboot)
 passwd<<EOF
