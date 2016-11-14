@@ -55,6 +55,8 @@ Veewee::Definition.declare({
      :arch => arch,
      :stage3url => stage3url,
      :stage3file => stage3file,
+#     :http_proxy => 'http://proxy:3128',
+#     :https_proxy => 'http://proxy:3128',
   },
   :postinstall_files => [
     'settings.sh',
