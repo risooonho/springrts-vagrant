@@ -29,18 +29,6 @@ mount --rbind /dev "$chroot/dev"
 
 # copy nameserver information, save build timestamp
 cp /etc/resolv.conf "$chroot/etc/"
-date -u > "$chroot/etc/vagrant_box_build_time"
-
-
-# bring up network interface and sshd on boot (Alt. for new systemd naming scheme, enp0s3)
-#chroot "$chroot" /bin/bash <<DATAEOF
-#cd /etc/conf.d
-#sed -i "s/eth0/enp0s3/" /etc/udhcpd.conf
-#echo 'config_enp0s3=( "dhcp" )' >> net
-#ln -s net.lo /etc/init.d/net.enp0s3
-#rc-update add net.enp0s3 default
-#rc-update add sshd default
-#DATAEOF
 
 # bring up network interface and sshd on boot (for older systemd naming scheme, eth0)
 chroot "$chroot" /bin/bash <<DATAEOF
@@ -48,7 +36,7 @@ ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 DATAEOF
 chroot "$chroot" /bin/bash <<DATAEOF
 cd /etc/conf.d
-echo 'config_eth0=( "dhcp" )' >> net
+echo 'config_eth0=( "dhcpcd" )' > net
 ln -s net.lo /etc/init.d/net.eth0
 rc-update add net.eth0 default
 rc-update add sshd default

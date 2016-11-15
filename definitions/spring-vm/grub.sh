@@ -2,9 +2,14 @@
 source /etc/profile
 
 # use grub2
-cat <<DATAEOF >> "$chroot/etc/portage/package.accept_keywords/grub"
+cat <<DATAEOF > "$chroot/etc/portage/package.accept_keywords/grub"
 sys-boot/grub:2
 DATAEOF
+
+cat <<DATAEOF > "$chroot/etc/portage/package.use/grub"
+sys-boot/grub -fonts -themes
+DATAEOF
+
 
 # install grub
 chroot "$chroot" emerge grub

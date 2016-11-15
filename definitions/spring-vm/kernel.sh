@@ -24,11 +24,11 @@ GENKERNEL_EXTRAPARAMS="${GENKERNEL_EXTRAPARAMS} --arch-override=x86"
 fi
 
 # get, configure, compile and install the kernel and modules
-chroot "$chroot" emerge sys-kernel/gentoo-sources sys-kernel/genkernel app-portage/gentoolkit
+chroot "$chroot" emerge sys-kernel/gentoo-sources sys-kernel/genkernel app-portage/gentoolkit net-misc/dhcpcd
 
 # add virtio modules to initrd
 cat <<DATAEOF >> "$chroot/etc/genkernel.conf"
 MODULES_KVM="virtio virtio_balloon virtio_ring virtio_pci virtio_blk virtio_net"
 DATAEOF
 
-chroot "$chroot" genkernel --install --symlink all ${GENKERNEL_EXTRAPARAMS}
+chroot "$chroot" genkernel --install --symlink --no-gpg --no-luks --no-multipath --no-dmraid ${GENKERNEL_EXTRAPARAMS} all

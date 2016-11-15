@@ -60,24 +60,24 @@ Veewee::Definition.declare({
     'settings.sh',
     'base.sh',
     'kernel.sh',
+    'grub.sh',
+    'vagrant.sh',
+    'reboot.sh', # reboot ASAP to have PAE support from compiled kernel
     'git.sh',
 #    'kvm-guest-tools.sh',
 #    'virtualbox.sh',
-    'vagrant.sh',
 #    'ruby.sh',
 #    'add_chef.sh',
 #    'add_puppet.sh',
     'add_vim.sh',
     'cron.sh',
     'syslog.sh',
-    'grub.sh',
     'spring_build_env.sh',
 #    'spring_build_env_x32.sh',
     'spring_buildbot.sh',
 #    'wipe_sources.sh',
 #    'cleanup.sh',
 #    'zerodisk.sh',
-    'reboot.sh'
   ],
   :postinstall_timeout => 10000
 })
