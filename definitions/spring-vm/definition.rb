@@ -2,11 +2,14 @@ require 'net/http'
 
 arch = "x86"
 #arch = "amd64"
-template_uri   = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/latest-install-#{arch}-minimal.txt"
+
+
+# amd64 is used for building 32 bit as the 32 bit has PAE disabled (which allows only ~1GB of RAM)
+template_uri   = "http://distfiles.gentoo.org/releases/amd64/autobuilds/latest-install-amd64-minimal.txt"
 template_build = Net::HTTP.get_response(URI.parse(template_uri)).body.split("\n").last.split(" ").first
 
 filename = template_build.split("/").last
-url = "http://distfiles.gentoo.org/releases/#{arch}/autobuilds/#{template_build}"
+url = "http://distfiles.gentoo.org/releases/amd64/autobuilds/#{template_build}"
 
 # uncomment / adjust for "offline" mode
 #filename = "install-x86-minimal-20161101.iso"
@@ -36,7 +39,7 @@ Veewee::Definition.declare({
   :boot_wait => "10",
   :boot_cmd_sequence => [
     '<Wait>' * 2,
-    'gentoo-nofb nokeymap dosshd passwd=vagrant<Enter>',
+    'gentoo-nofb nokeymap dosshd nodmraid nogpm nosound passwd=vagrant<Enter>',
   ],
 #  :kickstart_port    => '7122',
 #  :kickstart_timeout => 300,
@@ -62,7 +65,6 @@ Veewee::Definition.declare({
     'kernel.sh',
     'grub.sh',
     'vagrant.sh',
-    'reboot.sh', # reboot ASAP to have PAE support from compiled kernel
     'git.sh',
 #    'kvm-guest-tools.sh',
 #    'virtualbox.sh',
@@ -78,6 +80,7 @@ Veewee::Definition.declare({
 #    'wipe_sources.sh',
 #    'cleanup.sh',
 #    'zerodisk.sh',
+    'reboot.sh',
   ],
   :postinstall_timeout => 10000
 })

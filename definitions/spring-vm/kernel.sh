@@ -2,7 +2,7 @@
 source /etc/profile
 
 # add required use flags and keywords
-cat <<DATAEOF >> "$chroot/etc/portage/package.use/kernel"
+cat <<DATAEOF > "$chroot/etc/portage/package.use/kernel"
 sys-kernel/gentoo-sources symlink
 sys-kernel/genkernel -cryptsetup
 DATAEOF

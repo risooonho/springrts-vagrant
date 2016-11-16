@@ -108,6 +108,7 @@ mkdir -p "$chroot/etc/portage/package.use"
 mkdir -p "$chroot/etc/portage/package.accept_keywords"
 mkdir -p "$chroot/etc/portage/package.mask"
 mkdir -p "$chroot/etc/portage/package.unmask"
+mkdir -p "$chroot/etc/portage/package.keywords"
 
 
 # Some forced updates for this system
